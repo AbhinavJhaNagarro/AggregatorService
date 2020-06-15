@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: aggregatorapi-deployment
+spec:
+  selector:
+    matchLabels:
+      app: aggregatorapi-pod
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: aggregatorapi-pod
+    spec:
+      containers:
+        - name: aggregatorapi-container
+          image: abhinavnagarro/aggregatorapi:dev
+          ports:
+            - containerPort: 80
